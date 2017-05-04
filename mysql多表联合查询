@@ -1,0 +1,5 @@
+select c.change_id,r.operator,r.operate_time,g.target_id,b.id,b.source,b.title from actions_rollback  r 
+inner join actions_model_changlog c on r.id = c.rollback_id 
+inner join t_game_release g on  c.change_id = g.id  
+inner join actions_banner b on g.target_id = b.id 
+where r.name='release' and r.operate_time between '2016-10-1' and '2017-3-31'  and c.new like '%"release_type": 3%' and b.source = 0
